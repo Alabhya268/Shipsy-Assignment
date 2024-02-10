@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shipsy_assignment/blocs/bloc/movie_detail_bloc.dart';
-
 import 'package:shipsy_assignment/screens/home_screen/home_screen.dart';
-import 'package:shipsy_assignment/services/client_api_service.dart';
 import 'package:shipsy_assignment/services/injection_container.dart';
 
 void main() {
@@ -20,9 +16,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => MovieDetailBloc(),
-        ),
+        BlocProvider(create: (context) => MovieDetailBloc()),
       ],
       child: MaterialApp(
         theme: ThemeData(
