@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen>
   List<String> pageTitle = ["Upcoming Movies", "My Tickets"];
   List<Widget> get tabViews => [upComingMoviesTab, Container()];
 
-  void _onTabChange(int index) {
+  void onTabChange(int index) {
     setState(() {
       selectedIndex = index;
     });
@@ -41,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen>
             backgroundColor: Colors.green,
           ),
         ],
-        currentIndex: 0,
+        currentIndex: selectedIndex,
         selectedItemColor: Colors.amber[800],
-        onTap: _onTabChange,
+        onTap: onTabChange,
       ),
       body: IndexedStack(
         index: selectedIndex,
