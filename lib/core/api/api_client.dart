@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shipsy_assignment/app_environment/app_environment.dart';
@@ -11,12 +10,12 @@ import 'package:shipsy_assignment/utils/helper_enums.dart';
 class RestApiClient {
   static final Dio _dio = Dio(
     BaseOptions(
-        connectTimeout: const Duration(milliseconds: 500),
-        receiveTimeout: const Duration(milliseconds: 500),
-        sendTimeout: const Duration(milliseconds: 500),
+        connectTimeout: const Duration(seconds: 20),
+        receiveTimeout: const Duration(seconds: 20),
+        sendTimeout: const Duration(seconds: 20),
         headers: {
           'Authorization': AppEnvironment.apiToken,
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         }),
   );
 

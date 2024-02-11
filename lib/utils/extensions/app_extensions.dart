@@ -2,12 +2,14 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shipsy_assignment/utils/constants/constant_ui.dart';
 
 extension ContextHelper on BuildContext {
   MediaQueryData get appMediaQuery => MediaQuery.of(this);
   Size get mediaSize => appMediaQuery.size;
   double get mediaWidth => mediaSize.width;
   double get mediaHeight => mediaSize.height;
+  ConstantUi get constantUi => ConstantUi();
 
   void showSnackBar(
     String message, {
