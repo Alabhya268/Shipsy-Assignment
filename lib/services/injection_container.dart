@@ -1,7 +1,7 @@
 import 'package:shipsy_assignment/core/api/api_client.dart';
 import 'package:shipsy_assignment/services/client_api_service.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shipsy_assignment/utils/constants/api_path/api_path.dart';
+import 'package:shipsy_assignment/utils/constants/paths/api_path.dart';
 
 final getIt = GetIt.instance;
 

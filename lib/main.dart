@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shipsy_assignment/blocs/bloc/movie_detail_bloc.dart';
+import 'package:shipsy_assignment/blocs/movie_detail/movie_detail_bloc.dart';
+import 'package:shipsy_assignment/blocs/upcoming_movie/upcoming_movies_bloc.dart';
 import 'package:shipsy_assignment/screens/home_screen/home_screen.dart';
 import 'package:shipsy_assignment/services/injection_container.dart';
+import 'package:shipsy_assignment/utils/extensions/app_extensions.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   setup();
   runApp(const MainApp());
 }
@@ -16,16 +21,18 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => UpComingMoviesBloc()),
         BlocProvider(create: (context) => MovieDetailBloc()),
       ],
       child: MaterialApp(
         theme: ThemeData(
-          primaryColor: Colors.redAccent,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.redAccent,
+          primaryColor: context.constantUi.primaryColor,
+          appBarTheme: AppBarTheme(
+            backgroundColor: context.constantUi.primaryColor,
+            foregroundColor: context.constantUi.whiteColor,
             centerTitle: true,
             titleTextStyle: TextStyle(
-              color: Colors.white,
+              color: context.constantUi.whiteColor,
               fontSize: 20,
             ),
           ),

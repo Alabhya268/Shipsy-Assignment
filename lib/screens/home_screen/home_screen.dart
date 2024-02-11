@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shipsy_assignment/screens/home_screen/components/upcoming_movies_tab.dart';
+import 'package:shipsy_assignment/utils/extensions/app_extensions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(pageTitle[selectedIndex]),
@@ -33,16 +35,14 @@ class _HomeScreenState extends State<HomeScreen>
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
             label: 'My Tickets',
-            backgroundColor: Colors.green,
           ),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: context.constantUi.primaryColor,
         onTap: onTabChange,
       ),
       body: IndexedStack(

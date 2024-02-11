@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shipsy_assignment/services/injection_container.dart';
+import 'package:shipsy_assignment/utils/constants/paths/api_path.dart';
 
 /// add Padding Property to widget
 extension WidgetPaddingX on Widget {
@@ -59,4 +61,11 @@ extension WidgetSliverBoxX on Widget {
 extension WidgetOnTapX on Widget {
   Widget onTap(void Function() onTap) =>
       GestureDetector(onTap: onTap, child: this);
+}
+
+extension CategoryHelper on String {
+  String get toMovieImagePath {
+    String newString = getIt<RestAPIRequestPath>().movieImage(this);
+    return newString;
+  }
 }

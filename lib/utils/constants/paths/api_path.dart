@@ -12,11 +12,11 @@ class RestAPIRequestPath with RestAPIRequestProtocol {
   String get _baseImageUrl => AppEnvironment.baseImageUrl;
 
   @override
-  String upcomingMovies() => "$_baseUrl/movie/upcoming?language=en-US&page=1";
+  String upcomingMovies() => "$_baseUrl/movie/upcoming?language=en-US";
   @override
   String movieDetail(int movieId) => "$_baseUrl/movie/$movieId";
   @override
   String movieClip(int movieId) => "$_baseUrl/movie/$movieId/videos";
   @override
-  String movieImage(String imgPath) => "$_baseImageUrl$imgPath";
+  String movieImage(String moviePath) => "$_baseImageUrl$moviePath";
 }
