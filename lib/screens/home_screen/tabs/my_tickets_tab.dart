@@ -29,11 +29,37 @@ class _MyTicketsTabState extends State<MyTicketsTab> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget bodyType() {
+    final upcomingMovies = context.watch<MyTicketsBloc>();
+    switch (upcomingMovies.state.myTicketsStatus) {
+      case (MyTicketsStatus.error):
+        {
+          return const Center(
+            child: Text("Oops! Something went  wrong"),
+          );
+        }
+      case (MyTicketsStatus.success):
+        {
+          return Center(
+            child: successWidget(),
+          );
+        }
+      case (MyTicketsStatus.initial):
+        {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      default:
+        return const Center(
+          child: Text("No ticket purchased yet"),
+        );
+    }
+  }
+
+  Widget successWidget() {
     final myTicketBloc = context.watch<MyTicketsBloc>();
     final ticketData = myTicketBloc.state.myTickets.reversed.toList();
-
     return ticketData.isNotEmpty
         ? ListView.builder(
             itemCount: ticketData.length,
@@ -48,5 +74,10 @@ class _MyTicketsTabState extends State<MyTicketsTab> {
         : const Center(
             child: Text("No ticket purchased yet"),
           );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return bodyType();
   }
 }

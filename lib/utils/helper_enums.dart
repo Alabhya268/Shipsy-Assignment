@@ -4,3 +4,5 @@ enum RequestType {
   put,
   delete,
 }
+
+enum HiveBox { ticketList }

@@ -15,19 +15,37 @@ class MyTicketsBloc extends Bloc<MyTicketsEvent, MyTicketsState> {
   }
 
   Future<void> addTicketEvent(event, emit) async {
+    emit(state.copyWith(myTicketsStatus: MyTicketsStatus.loading));
     try {
       boxTickets.put(
         "ticketList",
         MyTicketsHiveModel(myTickets: [...state.myTickets, event.ticket]),
       );
-      emit(state.copyWith(myTickets: [...state.myTickets, event.ticket]));
+      emit(
+        state.copyWith(
+          myTickets: [...state.myTickets, event.ticket],
+          myTicketsStatus: MyTicketsStatus.success,
+        ),
+      );
     } catch (e) {
+      state.copyWith(myTicketsStatus: MyTicketsStatus.error);
       rethrow;
     }
   }
 
   Future<void> fetchMyTicketEvent(event, emit) async {
-    final data = boxTickets.get("ticketList")?.myTickets ?? [];
-    emit(state.copyWith(myTickets: [...data]));
+    try {
+      emit(state.copyWith(myTicketsStatus: MyTicketsStatus.loading));
+      final data = boxTickets.get("ticketList")?.myTickets ?? [];
+      emit(
+        state.copyWith(
+          myTickets: [...data],
+          myTicketsStatus: MyTicketsStatus.success,
+        ),
+      );
+    } catch (e) {
+      state.copyWith(myTicketsStatus: MyTicketsStatus.error);
+      rethrow;
+    }
   }
 }

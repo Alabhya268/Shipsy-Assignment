@@ -1,6 +1,6 @@
 part of 'my_tickets_bloc.dart';
 
-enum MyTicketsStatus { initial, success, failure }
+enum MyTicketsStatus { initial, success, error, loading }
 
 class MyTicketsState extends Equatable {
   const MyTicketsState({
@@ -12,12 +12,14 @@ class MyTicketsState extends Equatable {
 
   MyTicketsState copyWith({
     List<Ticket>? myTickets,
+    MyTicketsStatus? myTicketsStatus,
   }) {
     return MyTicketsState(
       myTickets: myTickets ?? this.myTickets,
+      myTicketsStatus: myTicketsStatus ?? this.myTicketsStatus,
     );
   }
 
   @override
-  List<Object?> get props => [myTickets];
+  List<Object?> get props => [myTickets, myTicketsStatus];
 }
