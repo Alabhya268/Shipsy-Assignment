@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:shipsy_assignment/blocs/movie_detail/movie_detail_bloc.dart';
+import 'package:shipsy_assignment/blocs/movie_location/movie_location_bloc.dart';
+import 'package:shipsy_assignment/blocs/movie_seat/movie_seat_bloc.dart';
+import 'package:shipsy_assignment/blocs/my_tickets/my_tickets_bloc.dart';
 import 'package:shipsy_assignment/blocs/upcoming_movie/upcoming_movies_bloc.dart';
 import 'package:shipsy_assignment/screens/home_screen/home_screen.dart';
 import 'package:shipsy_assignment/services/injection_container.dart';
@@ -23,6 +27,9 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => UpComingMoviesBloc()),
         BlocProvider(create: (context) => MovieDetailBloc()),
+        BlocProvider(create: (context) => MovieLocationBloc()),
+        BlocProvider(create: (context) => MovieSeatBloc()),
+        BlocProvider(create: (context) => MyTicketsBloc()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -30,7 +37,7 @@ class MainApp extends StatelessWidget {
           appBarTheme: AppBarTheme(
             backgroundColor: context.constantUi.primaryColor,
             foregroundColor: context.constantUi.whiteColor,
-            centerTitle: true,
+            centerTitle: false,
             titleTextStyle: TextStyle(
               color: context.constantUi.whiteColor,
               fontSize: 20,

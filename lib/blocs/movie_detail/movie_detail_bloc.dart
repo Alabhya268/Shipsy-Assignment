@@ -13,10 +13,11 @@ part 'movie_detail_state.dart';
 
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   MovieDetailBloc() : super(MovieDetailInitial()) {
-    on<FetchMovieDetail>((event, emit) async {
-      emit(MovieDetailLoading());
+    on<FetchMovieDetailEvent>((event, emit) async {
+      emit(MovieDetailLoadingState());
       try {
-        emit(MovieDetailLoading());
+        emit(MovieDetailLoadingState());
+        await Future.delayed(const Duration(milliseconds: 500));
         final movieData =
             await getIt<ClientApiService>().getMovieDetail(event.movieId);
         final movieImages =
@@ -24,14 +25,14 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
         final movieClips =
             await getIt<ClientApiService>().getMovieClip(event.movieId);
 
-        emit(MovieDetailFetched(
+        emit(MovieDetailFetchedState(
           movieDetail: movieData,
           movieImagesModel: movieImages,
           movieClipModel: movieClips,
         ));
       } catch (e) {
         appLogger.e(e);
-        emit(MovieDetailError());
+        emit(MovieDetailErrorState());
       }
     });
   }

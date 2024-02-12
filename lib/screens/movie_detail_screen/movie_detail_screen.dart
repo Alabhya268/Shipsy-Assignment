@@ -48,7 +48,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   Future<void> getUpcomingMovies() async {
     try {
       final upcomingMovies = context.read<MovieDetailBloc>();
-      upcomingMovies.add(FetchMovieDetail(movieId: widget.movieId));
+      upcomingMovies.add(FetchMovieDetailEvent(movieId: widget.movieId));
     } catch (e, s) {
       reportError.handleAppError(e, s);
     }
@@ -62,80 +62,107 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget bodytype() {
+    final movieLocation = context.watch<MovieDetailBloc>();
+    switch (movieLocation.state.runtimeType) {
+      case (MovieDetailFetchedState):
+        {
+          return successWidget();
+        }
+      case (MovieDetailErrorState):
+        {
+          return const Center(
+            child: Text("Oops! Something went wrong"),
+          );
+        }
+      case (MovieDetailLoadingState):
+        {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      default:
+        return Container();
+    }
+  }
+
+  Widget successWidget() {
     final movieDetails = context.watch<MovieDetailBloc>();
-    final curDetail = movieDetails.state.movieDetail;
-    final name = curDetail?.title ?? "";
     final movieClip = movieDetails.state.movieClipModel?.results
             ?.firstWhere((element) =>
                 element.type == "Trailer" && element.site == "YouTube")
             .key ??
         "";
+    return YoutubePlayerBuilder(
+      onEnterFullScreen: () {
+        setState(() {
+          hideWidgets = true;
+        });
+      },
+      onExitFullScreen: () {
+        setState(() {
+          hideWidgets = false;
+        });
+      },
+      player: YoutubePlayer(
+        controller: controller,
+      ),
+      builder: (context, player) {
+        return ListView(
+          children: [
+            const MovieDetailImageSection(),
+            MovieDetailBodySection(
+              playVideo: () {
+                controller = YoutubePlayerController(
+                  initialVideoId: movieClip,
+                  flags: const YoutubePlayerFlags(
+                    autoPlay: true,
+                    mute: true,
+                  ),
+                );
+                controller.toggleFullScreenMode();
+              },
+            ).paddingAll(15),
+          ],
+        );
+      },
+    );
+  }
 
-    return Builder(builder: (context) {
-      return Scaffold(
-        appBar: hideWidgets
-            ? null
-            : AppBar(
-                title: Text(
-                  name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+  @override
+  Widget build(BuildContext context) {
+    final movieDetails = context.watch<MovieDetailBloc>();
+    final curDetail = movieDetails.state.movieDetail;
+    final name = curDetail?.title ?? "";
+
+    return Scaffold(
+      appBar: hideWidgets
+          ? null
+          : AppBar(
+              title: Text(
+                name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-        floatingActionButton: hideWidgets
-            ? Container(
-                margin: const EdgeInsets.only(bottom: 50, right: 20),
-                child: FloatingActionButton(
-                  backgroundColor: context.constantUi.primaryColor,
-                  onPressed: () {
-                    controller.toggleFullScreenMode();
-                  },
-                  child: Text(
-                    "Done",
-                    style: TextStyle(
-                      color: context.constantUi.whiteColor,
-                    ),
+            ),
+      floatingActionButton: hideWidgets
+          ? Container(
+              margin: const EdgeInsets.only(bottom: 50, right: 20),
+              child: FloatingActionButton(
+                backgroundColor: context.constantUi.whiteColor.withOpacity(0.3),
+                onPressed: () {
+                  controller.toggleFullScreenMode();
+                },
+                child: Text(
+                  "Done",
+                  style: TextStyle(
+                    color: context.constantUi.whiteColor,
                   ),
                 ),
-              )
-            : null,
-        body: YoutubePlayerBuilder(
-          onEnterFullScreen: () {
-            setState(() {
-              hideWidgets = true;
-            });
-          },
-          onExitFullScreen: () {
-            setState(() {
-              hideWidgets = false;
-            });
-          },
-          player: YoutubePlayer(
-            controller: controller,
-          ),
-          builder: (context, player) {
-            return ListView(
-              children: [
-                const MovieDetailImageSection(),
-                MovieDetailBodySection(
-                  playVideo: () {
-                    controller = YoutubePlayerController(
-                      initialVideoId: movieClip,
-                      flags: const YoutubePlayerFlags(
-                        autoPlay: true,
-                        mute: true,
-                      ),
-                    );
-                    controller.toggleFullScreenMode();
-                  },
-                ).paddingAll(15),
-              ],
-            );
-          },
-        ),
-      );
-    });
+              ),
+            )
+          : null,
+      body: bodytype(),
+    );
   }
 }

@@ -12,8 +12,8 @@ sealed class MovieDetailState {
 
 final class MovieDetailInitial extends MovieDetailState {}
 
-final class MovieDetailFetched extends MovieDetailState {
-  MovieDetailFetched({
+final class MovieDetailFetchedState extends MovieDetailState {
+  MovieDetailFetchedState({
     required this.movieDetail,
     required this.movieImagesModel,
     required this.movieClipModel,
@@ -29,6 +29,6 @@ final class MovieDetailFetched extends MovieDetailState {
   final MovieClipModel? movieClipModel;
 }
 
-final class MovieDetailLoading extends MovieDetailState {}
+final class MovieDetailLoadingState extends MovieDetailState {}
 
-final class MovieDetailError extends MovieDetailState {}
+final class MovieDetailErrorState extends MovieDetailState {}

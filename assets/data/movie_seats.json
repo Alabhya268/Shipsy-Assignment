@@ -1,0 +1,34 @@
+{
+    "seats": [
+        {
+            "seat_id": 1,
+            "seat_name": "A1",
+            "price": 200.00
+        },
+        {
+            "seat_id": 2,
+            "seat_name": "A2",
+            "price": 200.00
+        },
+        {
+            "seat_id": 3,
+            "seat_name": "A3",
+            "price": 200.00
+        },
+        {
+            "seat_id": 4,
+            "seat_name": "B1",
+            "price": 200.00
+        },
+        {
+            "seat_id": 5,
+            "seat_name": "B2",
+            "price": 200.00
+        },
+        {
+            "seat_id": 2,
+            "seat_name": "B3",
+            "price": 200.00
+        }
+    ]
+}

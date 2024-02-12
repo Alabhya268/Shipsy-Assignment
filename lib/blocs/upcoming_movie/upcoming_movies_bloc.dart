@@ -13,20 +13,24 @@ part 'upcoming_movies_state.dart';
 class UpComingMoviesBloc
     extends Bloc<UpComingMoviesEvent, UpComingMoviesState> {
   UpComingMoviesBloc() : super(UpComingMoviesInitial()) {
-    on<FetchMovies>(moviesFetched);
+    on<FetchMoviesEvent>(moviesFetched);
   }
 
-  void moviesFetched(FetchMovies event, emit) async {
+  void moviesFetched(FetchMoviesEvent event, emit) async {
     try {
-      emit(UpComingMoviesError());
+      emit(UpComingMoviesLoadingState());
+
+      await Future.delayed(
+        const Duration(milliseconds: 500),
+      );
       final data =
           await getIt<ClientApiService>().getUpComingMovies(event.pageNumber);
       state.movieList.addAll(data?.results ?? []);
       emit(
-        UpComingMoviesFetched(movieList: state.movieList),
+        UpComingMoviesFetchedState(movieList: state.movieList),
       );
     } catch (e) {
-      emit(UpComingMoviesError());
+      emit(UpComingMoviesErrorState());
       appLogger.e(e);
     }
   }

@@ -22,16 +22,11 @@ class KVStringWidget extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  style: TextStyle(
-                      color: context.constantUi.blackColors,
-                      fontWeight: FontWeight.w500,
-                      fontSize: context.constantUi.fontSizeMedium2),
+                  style: context.constantUi.boldTextStyle2,
                   text: keyString,
                 ),
                 TextSpan(
-                  style: TextStyle(
-                      color: context.constantUi.blackColors,
-                      fontSize: context.constantUi.fontSizeMedium2),
+                  style: context.constantUi.lightTextStyle,
                   text: value,
                 ),
               ],
