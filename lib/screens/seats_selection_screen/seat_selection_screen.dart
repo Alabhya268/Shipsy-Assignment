@@ -6,8 +6,8 @@ import 'package:shipsy_assignment/blocs/movie_seat/movie_seat_bloc.dart';
 import 'package:shipsy_assignment/blocs/my_tickets/my_tickets_bloc.dart';
 import 'package:shipsy_assignment/models/movie_locations_model/show.dart';
 import 'package:shipsy_assignment/models/movie_tickets_model/ticket.dart';
-import 'package:shipsy_assignment/screens/seats_selection_screen/conponents/seat_screen_section.dart';
-import 'package:shipsy_assignment/screens/seats_selection_screen/conponents/seats_selection_section.dart';
+import 'package:shipsy_assignment/screens/seats_selection_screen/components/seat_screen_section.dart';
+import 'package:shipsy_assignment/screens/seats_selection_screen/components/seats_selection_section.dart';
 import 'package:shipsy_assignment/screens/ticket_detail_screen/ticket_detail_screen.dart';
 import 'package:shipsy_assignment/utils/app_error.dart';
 import 'package:shipsy_assignment/utils/extensions/app_extensions.dart';
@@ -104,7 +104,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
     final ticket = Ticket(
       movieId: widget.movieId,
       movieImage: widget.movieImage,
-      ticketId: Random().nextInt(100),
+      ticketId: Random().nextInt(9999),
       movieName: widget.name,
       mallName: "${widget.showData?.mallName}, ${widget.cityName} ",
       date: widget.showData?.date,

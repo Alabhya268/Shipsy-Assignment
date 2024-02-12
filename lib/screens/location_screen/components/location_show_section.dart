@@ -70,7 +70,7 @@ class LocationShowSection extends StatelessWidget {
                   children: [
                     KVStringWidget(keyString: "Mall Name: ", value: mallname),
                     KVStringWidget(keyString: "Show Date: ", value: showDate),
-                    KVStringWidget(keyString: "Show Timw: ", value: showTime),
+                    KVStringWidget(keyString: "Show Time: ", value: showTime),
                   ],
                 ),
               ),
