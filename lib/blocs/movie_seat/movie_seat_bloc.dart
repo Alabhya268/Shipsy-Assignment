@@ -8,20 +8,22 @@ part 'movie_seat_state.dart';
 
 class MovieSeatBloc extends Bloc<MovieSeatEvent, MovieSeatState> {
   MovieSeatBloc() : super(MovieSeatInitial()) {
-    on<FetchMovieSeatEvent>((event, emit) async {
-      emit(MovieSeatLoadingState());
-      try {
-        await Future.delayed(const Duration(milliseconds: 500));
-        final data = await getIt<ClientApiService>().getMovieSeats(
-          event.movieId,
-          event.locationName,
-        );
+    on<FetchMovieSeatEvent>(fetchMovieSeatEvent);
+  }
 
-        emit(MovieSeatFetchedState(seats: data?.seats));
-      } catch (e) {
-        emit(MovieSeatErrorState());
-        rethrow;
-      }
-    });
+  Future<void> fetchMovieSeatEvent(event, emit) async {
+    emit(MovieSeatLoadingState());
+    try {
+      await Future.delayed(const Duration(milliseconds: 500));
+      final data = await getIt<ClientApiService>().getMovieSeats(
+        event.movieId,
+        event.locationName,
+      );
+
+      emit(MovieSeatFetchedState(seats: data?.seats));
+    } catch (e) {
+      emit(MovieSeatErrorState());
+      rethrow;
+    }
   }
 }

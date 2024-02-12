@@ -1,12 +1,34 @@
-class Ticket {
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'ticket.g.dart';
+
+@HiveType(typeId: 1)
+class Ticket extends HiveObject {
+  @HiveField(0)
   int? ticketId;
+
+  @HiveField(1)
   int? movieId;
+
+  @HiveField(2)
   String? movieName;
+
+  @HiveField(3)
   String? movieImage;
+
+  @HiveField(4)
   String? mallName;
+
+  @HiveField(5)
   String? date;
+
+  @HiveField(6)
   String? time;
+
+  @HiveField(7)
   double? totalPrice;
+
+  @HiveField(8)
   List<String>? seatNames;
 
   Ticket({
