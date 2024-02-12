@@ -1,0 +1,184 @@
+{
+    "location": [
+        {
+            "location_id": 1,
+            "location_name": "Gurugram",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Gurugram Mall",
+                    "date": "14/2/24",
+                    "time": "10:00 AM - 01:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Palasio",
+                    "date": "15/2/24",
+                    "time": "10:00 AM - 01:00 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 3,
+            "location_name": "Mumbai",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Phoenix Mall",
+                    "date": "16/2/24",
+                    "time": "09:30 AM - 12:30 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Inorbit Mall",
+                    "date": "17/2/24",
+                    "time": "10:30 AM - 01:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 4,
+            "location_name": "Bangalore",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "UB City Mall",
+                    "date": "16/2/24",
+                    "time": "11:00 AM - 02:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Orion Mall",
+                    "date": "17/2/24",
+                    "time": "11:30 AM - 02:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 11,
+            "location_name": "Lucknow",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Phoenix United Mall",
+                    "date": "24/2/24",
+                    "time": "10:00 AM - 01:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Wave Mall",
+                    "date": "25/2/24",
+                    "time": "10:30 AM - 01:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 12,
+            "location_name": "Chandigarh",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Elante Mall",
+                    "date": "24/2/24",
+                    "time": "11:00 AM - 02:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "North Country Mall",
+                    "date": "25/2/24",
+                    "time": "11:30 AM - 02:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 13,
+            "location_name": "Bhopal",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "DB City Mall",
+                    "date": "26/2/24",
+                    "time": "10:00 AM - 01:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Aura Mall",
+                    "date": "27/2/24",
+                    "time": "10:30 AM - 01:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 14,
+            "location_name": "Indore",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Treasure Island Mall",
+                    "date": "26/2/24",
+                    "time": "11:00 AM - 02:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "C21 Mall",
+                    "date": "27/2/24",
+                    "time": "11:30 AM - 02:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 15,
+            "location_name": "Kochi",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "LuLu Mall",
+                    "date": "28/2/24",
+                    "time": "10:00 AM - 01:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Centre Square Mall",
+                    "date": "29/2/24",
+                    "time": "10:30 AM - 01:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 16,
+            "location_name": "Coimbatore",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "Brookefields Mall",
+                    "date": "28/2/24",
+                    "time": "11:00 AM - 02:00 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Fun Republic Mall",
+                    "date": "29/2/24",
+                    "time": "11:30 AM - 02:30 PM"
+                }
+            ]
+        },
+        {
+            "location_id": 17,
+            "location_name": "Jaipur",
+            "shows": [
+                {
+                    "show_id": 1,
+                    "mall_name": "World Trade Park",
+                    "date": "30/2/24",
+                    "time": "10:30 AM - 01:30 PM"
+                },
+                {
+                    "show_id": 2,
+                    "mall_name": "Pink Square Mall",
+                    "date": "1/3/24",
+                    "time": "11:00 AM - 02:00 PM"
+                }
+            ]
+        }
+    ]
+}

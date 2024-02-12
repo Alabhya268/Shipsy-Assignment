@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class ConstantUi {
   Color primaryColor = Colors.redAccent;
   Color whiteColor = Colors.white;
-  Color blackColors = Colors.black;
+  Color blackColor = Colors.black;
+  Color blackLightColor = Colors.black12;
+
+  Color blueScreenColor = Colors.blueAccent.shade100;
 
   double fontSizeSmall1 = 10;
   double fontSizeSmall2 = 12;
@@ -22,5 +25,32 @@ class ConstantUi {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+      );
+
+  TextStyle get boldTextStyle => const TextStyle(fontWeight: FontWeight.bold);
+
+  TextStyle get boldTextStyle1 => TextStyle(
+        fontSize: fontSizeMedium3,
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get boldTextStyle2 => TextStyle(
+        color: blackColor,
+        fontWeight: FontWeight.w500,
+        fontSize: fontSizeMedium2,
+      );
+
+  TextStyle get lightTextStyle =>
+      TextStyle(color: blackColor, fontSize: fontSizeMedium2);
+
+  TextStyle get headingTextStyle1 => TextStyle(
+        fontSize: fontSizeMedium3,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle headingTextStyle1Fun(Color color) => TextStyle(
+        fontSize: fontSizeMedium3,
+        fontWeight: FontWeight.bold,
+        color: color,
       );
 }

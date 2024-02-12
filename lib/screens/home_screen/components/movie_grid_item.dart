@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shipsy_assignment/models/upcoming_movies_model/upcoming_item_model.dart';
+import 'package:shipsy_assignment/screens/location_screen/location_screen.dart';
 import 'package:shipsy_assignment/screens/movie_detail_screen/movie_detail_screen.dart';
 import 'package:shipsy_assignment/services/injection_container.dart';
 import 'package:shipsy_assignment/utils/constants/paths/api_path.dart';
@@ -24,6 +25,20 @@ class MovieGridItem extends StatelessWidget {
     final adult = curMovie.adult ?? false ? "Yes" : "No";
     final image =
         getIt<RestAPIRequestPath>().movieImage(curMovie.backdropPath ?? "");
+
+    void bookNowOnTap() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LocationScreen(
+            movieName: name,
+            movieid: movieId,
+            movieImg: image,
+          ),
+        ),
+      );
+    }
+
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -67,23 +82,23 @@ class MovieGridItem extends StatelessWidget {
                       name,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: context.constantUi.boldTextStyle,
                     ),
                     const SizedBox(height: 5),
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           "Release on: ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: context.constantUi.boldTextStyle,
                         ),
                         Text(releaseDate),
                       ],
                     ),
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           "Adult: ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: context.constantUi.boldTextStyle,
                         ),
                         Text(adult),
                       ],
@@ -102,10 +117,10 @@ class MovieGridItem extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: bookNowOnTap,
                     style: context.constantUi.elevatedButtonStyleOne,
                     child: Text(
-                      "Book",
+                      "Book Now",
                       style: TextStyle(color: context.constantUi.whiteColor),
                     ),
                   ),

@@ -10,13 +10,13 @@ sealed class UpComingMoviesState {
 
 final class UpComingMoviesInitial extends UpComingMoviesState {}
 
-final class UpComingMoviesFetched extends UpComingMoviesState {
-  UpComingMoviesFetched({required this.movieList});
+final class UpComingMoviesFetchedState extends UpComingMoviesState {
+  UpComingMoviesFetchedState({required this.movieList});
 
   @override
   final List<UpcomingItemModel> movieList;
 }
 
-final class UpComingMoviesLoading extends UpComingMoviesState {}
+final class UpComingMoviesLoadingState extends UpComingMoviesState {}
 
-final class UpComingMoviesError extends UpComingMoviesState {}
+final class UpComingMoviesErrorState extends UpComingMoviesState {}

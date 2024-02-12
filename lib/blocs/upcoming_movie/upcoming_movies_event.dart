@@ -3,8 +3,8 @@ part of 'upcoming_movies_bloc.dart';
 @immutable
 sealed class UpComingMoviesEvent {}
 
-final class FetchMovies extends UpComingMoviesEvent {
+final class FetchMoviesEvent extends UpComingMoviesEvent {
   final int pageNumber;
 
-  FetchMovies({required this.pageNumber});
+  FetchMoviesEvent({required this.pageNumber});
 }

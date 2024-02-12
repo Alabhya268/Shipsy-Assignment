@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:shipsy_assignment/blocs/movie_detail/movie_detail_bloc.dart';
-import 'package:shipsy_assignment/screens/movie_detail_screen/components/kv_string_widget.dart';
+import 'package:shipsy_assignment/screens/location_screen/location_screen.dart';
+import 'package:shipsy_assignment/screens/movie_detail_screen/components/movie_rating_widget.dart';
+import 'package:shipsy_assignment/utils/extensions/widget_extensions.dart';
+import 'package:shipsy_assignment/widgets/kv_string_widget.dart';
 import 'package:shipsy_assignment/utils/extensions/app_extensions.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailBodySection extends StatefulWidget {
   const MovieDetailBodySection({super.key, required this.playVideo});
@@ -16,6 +17,19 @@ class MovieDetailBodySection extends StatefulWidget {
 }
 
 class _MovieDetailBodySectionState extends State<MovieDetailBodySection> {
+  void bookNowOnTap(String name, int? movieId, String img) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LocationScreen(
+          movieName: name,
+          movieid: movieId,
+          movieImg: img,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final movieDetails = context.watch<MovieDetailBloc>();
@@ -27,6 +41,8 @@ class _MovieDetailBodySectionState extends State<MovieDetailBodySection> {
         "";
 
     final name = curDetail?.title ?? "";
+    final movieId = curDetail?.id;
+    final posterPath = curDetail?.posterPath ?? "";
     final genres = curDetail?.genres?.map((e) => e.name).join(", ") ?? "";
     final releaseData = curDetail?.releaseDate;
     final overview = curDetail?.overview;
@@ -58,25 +74,7 @@ class _MovieDetailBodySectionState extends State<MovieDetailBodySection> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        Row(
-          children: [
-            RatingStars(
-              value: voteStars,
-              starBuilder: (index, color) => Icon(
-                Icons.star,
-                color: color,
-              ),
-              starCount: 10,
-              starSize: 20,
-              valueLabelTextStyle: TextStyle(
-                color: context.constantUi.whiteColor,
-                fontSize: context.constantUi.fontSizeSmall2,
-              ),
-              maxValue: 10,
-              starColor: context.constantUi.primaryColor,
-            ),
-          ],
-        ),
+        MovieRatingWidget(voteStars: voteStars),
         const SizedBox(height: 15),
         KVStringWidget(
           keyString: "Genres: ",
@@ -93,6 +91,21 @@ class _MovieDetailBodySectionState extends State<MovieDetailBodySection> {
           value: overview,
         ),
         const SizedBox(height: 5),
+        ElevatedButton(
+          style: context.constantUi.elevatedButtonStyleOne,
+          onPressed: () {
+            bookNowOnTap(name, movieId, posterPath.toMovieImagePath);
+          },
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Center(
+              child: Text(
+                "Book Now",
+                style: TextStyle(color: context.constantUi.whiteColor),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

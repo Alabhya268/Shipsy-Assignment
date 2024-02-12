@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shipsy_assignment/screens/home_screen/components/upcoming_movies_tab.dart';
+import 'package:shipsy_assignment/screens/home_screen/tabs/my_tickets_tab.dart';
+import 'package:shipsy_assignment/screens/home_screen/tabs/upcoming_movies_tab.dart';
 import 'package:shipsy_assignment/utils/extensions/app_extensions.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,8 +14,9 @@ class _HomeScreenState extends State<HomeScreen>
     with AutomaticKeepAliveClientMixin {
   int selectedIndex = 0;
   final upComingMoviesTab = const UpComingMoviesTab();
+  final myTicketTab = const MyTicketsTab();
   List<String> pageTitle = ["Upcoming Movies", "My Tickets"];
-  List<Widget> get tabViews => [upComingMoviesTab, Container()];
+  List<Widget> get tabViews => [upComingMoviesTab, myTicketTab];
 
   void onTabChange(int index) {
     setState(() {
