@@ -32,9 +32,9 @@ shipsy_assignment
 
 You can replace API Key and ApiToken in AppEnvironment [here](https://github.com/Alabhya268/Shipsy-Assignment/blob/main/lib/app_environment/app_environment.dart).
 
-Download Demo apk from [here](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_assignment.apk).
+Download Demo apk from [here](https://github.com/Alabhya268/Shipsy-Assignment/raw/laptop/demo/shipsy_assignment.apk).
 
 
 
-[![Watch Demo Video](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_thumbnail.png)](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_assignment_clip.MP4)
+[![Watch Demo Video](https://github.com/Alabhya268/Shipsy-Assignment/blob/laptop/demo/shipsy_thumbnail.png?raw=true)](https://github.com/Alabhya268/Shipsy-Assignment/raw/laptop/demo/shipsy_assignment_clip.MP4)
 
