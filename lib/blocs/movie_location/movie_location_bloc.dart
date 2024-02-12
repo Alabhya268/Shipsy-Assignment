@@ -9,21 +9,23 @@ part 'movie_location_state.dart';
 
 class MovieLocationBloc extends Bloc<MovieLocationEvent, MovieLocationState> {
   MovieLocationBloc() : super(MovieLocationInitial()) {
-    on<FetchMovieLocationEvent>((event, emit) async {
-      emit(MovieLocationLoadingState());
-      try {
-        await Future.delayed(
-          const Duration(milliseconds: 500),
-        );
-        final data =
-            await getIt<ClientApiService>().getMovieLocation(event.movieId);
-        emit(
-          MovieLocationFetchedState(movieLocationsModel: data),
-        );
-      } catch (e) {
-        emit(MovieLocationErrorState());
-        rethrow;
-      }
-    });
+    on<FetchMovieLocationEvent>(fetchMovieLocationEvent);
+  }
+
+  Future<void> fetchMovieLocationEvent(event, emit) async {
+    emit(MovieLocationLoadingState());
+    try {
+      await Future.delayed(
+        const Duration(milliseconds: 500),
+      );
+      final data =
+          await getIt<ClientApiService>().getMovieLocation(event.movieId);
+      emit(
+        MovieLocationFetchedState(movieLocationsModel: data),
+      );
+    } catch (e) {
+      emit(MovieLocationErrorState());
+      rethrow;
+    }
   }
 }
