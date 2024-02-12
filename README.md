@@ -14,7 +14,7 @@ shipsy_assignment
     Execute following commands in terminal.
 
 
-``` $ cd shipsy_assignment```
+``` $ cd Shipsy-Assignment```
 
 
 ``` $ flutter clean ```
