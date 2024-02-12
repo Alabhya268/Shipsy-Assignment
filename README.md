@@ -36,5 +36,5 @@ Download Demo apk from [here](https://github.com/Alabhya268/blup_assignment/raw/
 
 
 
-[![Watch Demo Video](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_thumbnail.png)](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_assignment.webm)
+[![Watch Demo Video](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_thumbnail.png)](https://github.com/Alabhya268/blup_assignment/raw/main/demo/shipsy_assignment_clip.MP4)
 
