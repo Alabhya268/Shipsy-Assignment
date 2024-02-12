@@ -106,6 +106,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       },
       player: YoutubePlayer(
         controller: controller,
+        onEnded: (meta) {
+          controller.toggleFullScreenMode();
+        },
       ),
       builder: (context, player) {
         return ListView(

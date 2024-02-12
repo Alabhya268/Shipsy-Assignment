@@ -84,6 +84,9 @@ class TicketDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 KVStringWidget(
+                    keyString: "Ticket id: ",
+                    value: ticket.ticketId.toString()),
+                KVStringWidget(
                     keyString: "Movie name: ", value: ticket.movieName ?? ""),
                 KVStringWidget(
                     keyString: "Mall name: ", value: ticket.mallName ?? ""),

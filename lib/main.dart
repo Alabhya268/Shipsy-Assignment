@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:shipsy_assignment/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:shipsy_assignment/blocs/movie_location/movie_location_bloc.dart';
 import 'package:shipsy_assignment/blocs/movie_seat/movie_seat_bloc.dart';
@@ -42,6 +41,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => MyTicketsBloc()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: context.constantUi.primaryColor,
           appBarTheme: AppBarTheme(
